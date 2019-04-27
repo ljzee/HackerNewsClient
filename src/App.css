@@ -1,33 +1,65 @@
 .App {
-  text-align: center;
+  width: 80%;
+  margin: 10px auto 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+header{
+  height: wrap-content;
+  background-color: #ff6600;
+  text-align: left;
+  overflow: hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.logo {
+  font-weight: 900;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.login{
+  float:right;
+  padding-right: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header *{
+  display: inline-block;
+  position:relative;
+  top: 25%;
+}
+
+header nav a{
+  border-right: 1px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.Body{
+  margin: 0;
+  background-color: rgb(246, 246, 239);
+  padding-left: 30px;
+
+}
+
+.link{
+  padding: 10px 0px 10px 15px;
+  background-color: rgb(246, 246, 239);
+
+  font-size: 15px;
+}
+
+.link_metadata{
+  margin: 0;
+  padding-right: 5px;
+  font-size: 12px;
+  display: inline-block;
+  border-right: 1px solid black;
+}
+
+.comments{
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 12px;
 }
