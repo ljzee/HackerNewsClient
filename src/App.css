@@ -17,6 +17,8 @@ header{
   font-weight: 900;
   margin-right: 10px;
   margin-left: 10px;
+  text-decoration: none;
+  color: black;
 }
 
 .login{
@@ -30,8 +32,18 @@ header *{
   top: 25%;
 }
 
-header nav a:not(:first-child):before {
+header nav a{
+  text-decoration: none;
+  color:black;
+}
+
+header nav a.active{
+  color: white;
+}
+
+header nav a:not(:first-child):before, header nav a.active:not(:first-child):before {
     content: " | ";
+    color: black;
 }
 
 table {
@@ -39,7 +51,7 @@ table {
 }
 
 table tbody {
-  border-top: 5px solid transparent;
+  border-top: 10px solid transparent;
 }
 
 .Body{

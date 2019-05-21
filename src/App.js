@@ -1,18 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 
 import Header from './components/header/Header';
-import Body from './components/body/Body'
-import Footer from './components/footer/Footer'
+import Body from './components/body/Body';
+import Footer from './components/footer/Footer';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Body/>
-      <Footer/>
-    </div>
+    <Router>
+      <div className="App">
+        <Header/>
+        <Switch>
+          <Route path="/" exact render={(props) => <Body {...props} filterBy={'topstories'}/>} />
+          <Route path="/new" exact render={(props) => <Body {...props} filterBy={'newstories'}/>} />
+        </Switch>
+        <Footer/>
+      </div>
+    </Router>
   );
 }
 

@@ -16,7 +16,8 @@ class Body extends Component{
   }
 
   componentDidMount(){
-    axios.get('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty')
+    console.log(this.props.filterBy);
+    axios.get(`https://hacker-news.firebaseio.com/v0/${this.props.filterBy}.json?print=pretty`)
       .then(response => {
         let newState = Object.assign({}, this.state);
         newState.ids = response.data;
@@ -39,18 +40,31 @@ class Body extends Component{
       })
   }
 
-  /*componentDidUpdate(){
-    let newState = Object.assign({}, this.state)
-    for(var i = this.state.startIndex; i < this.state.number; i++){
-      axios.get(`https://hacker-news.firebaseio.com/v0/item/${this.state.ids[i]}.json?print=pretty`)
-        .then(response => {
-          newState = Object.assign({}, this.state);
-          newState.content.push(response.data);
-          this.setState(newState);
-        })
+  componentDidUpdate(prevProps){
+    if (this.props.filterBy !== prevProps.filterBy) {
+      axios.get(`https://hacker-news.firebaseio.com/v0/${this.props.filterBy}.json?print=pretty`)
+      .then(response => {
+        let newState = Object.assign({}, this.state);
+        newState.ids = response.data;
+        let promises = [];
 
-      }
-  }*/
+        for(var i = newState.startIndex; i < newState.number; i++){
+          promises.push(axios.get(`https://hacker-news.firebaseio.com/v0/item/${newState.ids[i]}.json?print=pretty`));
+        }
+        axios.all(promises).then(result => {
+
+          let newContent = result.map(x => x.data);
+          newState.content = newContent;
+          this.setState(newState);
+
+        });
+
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+    }
+  }
 
   swapContent(){
       let newState = Object.assign({}, this.state);
