@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Link from "./Link";
+import Post from "./Post";
 import axios from 'axios';
 
 class Body extends Component{
@@ -16,7 +16,7 @@ class Body extends Component{
   }
 
   componentDidMount(){
-    console.log(this.props.filterBy);
+    //console.log(this.props.filterBy);
     axios.get(`https://hacker-news.firebaseio.com/v0/${this.props.filterBy}.json?print=pretty`)
       .then(response => {
         let newState = Object.assign({}, this.state);
@@ -90,7 +90,7 @@ class Body extends Component{
       <div className="Body">
         <table>
           {this.state.content.map((content, i) => (
-            <Link key={i} content={content} index={this.state.startIndex + i + 1}/>
+            <Post key={i} content={content} index={this.state.startIndex + i + 1} postPage={false}/>
           ))}
 
           {(this.state.startIndex + this.state.number) < this.state.ids.length &&

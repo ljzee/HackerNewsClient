@@ -13,7 +13,6 @@ class Header extends Component{
 
   setLinkActive(name){
     this.setState({active: name});
-    console.log(this.state.active);
   }
 
   render(){
